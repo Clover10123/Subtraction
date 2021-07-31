@@ -4,7 +4,7 @@
 #########################################################
 
 
-int attractiveness # Default level of attraction
+var attractiveness : int# Default level of attraction
 
 func _init():
 	attractiveness = 20
