@@ -71,7 +71,7 @@ texture = ExtResource( 3 )
 margin_left = 256.0
 margin_top = 40.0
 margin_right = 624.0
-margin_bottom = 320.0
+margin_bottom = 202.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -110,46 +110,6 @@ __meta__ = {
 }
 
 [node name="Option2Label" type="RichTextLabel" parent="AnswerPanel/Option2"]
-margin_left = 64.0
-margin_top = 8.0
-margin_right = 344.0
-margin_bottom = 56.0
-text = "This is the text for an answer option."
-
-[node name="Option3" type="TextureButton" parent="AnswerPanel"]
-margin_top = 144.0
-margin_right = 64.0
-margin_bottom = 208.0
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 5 )
-texture_hover = ExtResource( 6 )
-expand = true
-stretch_mode = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Option3Label" type="RichTextLabel" parent="AnswerPanel/Option3"]
-margin_left = 64.0
-margin_top = 8.0
-margin_right = 344.0
-margin_bottom = 56.0
-text = "This is the text for an answer option."
-
-[node name="Option4" type="TextureButton" parent="AnswerPanel"]
-margin_top = 208.0
-margin_right = 64.0
-margin_bottom = 272.0
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 5 )
-texture_hover = ExtResource( 6 )
-expand = true
-stretch_mode = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Option4Label" type="RichTextLabel" parent="AnswerPanel/Option4"]
 margin_left = 64.0
 margin_top = 8.0
 margin_right = 344.0
