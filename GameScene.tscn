@@ -10,8 +10,6 @@
 
 [node name="GameScene" type="Node2D"]
 
-[node name="SettingsMenu" parent="." instance=ExtResource( 1 )]
-
 [node name="GameShowHost" type="Sprite" parent="."]
 position = Vector2( 112, 88 )
 texture = ExtResource( 2 )
@@ -157,3 +155,5 @@ margin_top = 8.0
 margin_right = 344.0
 margin_bottom = 56.0
 text = "This is the text for an answer option."
+
+[node name="SettingsMenu" parent="." instance=ExtResource( 1 )]
