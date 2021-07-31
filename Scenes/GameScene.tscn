@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/SettingsMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/graphics/candy butterscotch.png" type="Texture" id=2]
@@ -8,8 +8,10 @@
 [ext_resource path="res://textures/buttons/soft green button hover.png" type="Texture" id=6]
 [ext_resource path="res://textures/graphics/candy sour.png" type="Texture" id=7]
 [ext_resource path="res://textures/graphics/pink bar.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Scripts/GameScene.gd" type="Script" id=9]
 
 [node name="GameScene" type="Node2D"]
+script = ExtResource( 9 )
 
 [node name="GameShowHost" type="Sprite" parent="."]
 position = Vector2( 112, 88 )
@@ -50,9 +52,9 @@ margin_left = 44.0
 margin_top = -88.0
 margin_right = 134.0
 margin_bottom = -63.0
-min_value = -10.0
-max_value = 10.0
 step = 0.0
+value = 50.0
+exp_edit = true
 texture_progress = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -67,9 +69,8 @@ margin_left = 152.0
 margin_top = -88.0
 margin_right = 242.0
 margin_bottom = -63.0
-min_value = -10.0
-max_value = 10.0
 step = 0.0
+value = 50.0
 texture_progress = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -84,9 +85,8 @@ margin_left = 256.0
 margin_top = -88.0
 margin_right = 346.0
 margin_bottom = -63.0
-min_value = -10.0
-max_value = 10.0
 step = 0.0
+value = 50.0
 texture_progress = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -96,12 +96,15 @@ __meta__ = {
 position = Vector2( 40, 64 )
 texture = ExtResource( 7 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="DatePanel"]
+[node name="QuestionLabel" type="RichTextLabel" parent="DatePanel"]
 margin_left = 16.0
 margin_top = 48.0
 margin_right = 368.0
 margin_bottom = 168.0
 text = "Contains text for the date questions. A small indicator will appear beneath each character's face, to indicate who is asking the question."
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PlayerSprite" type="Sprite" parent="."]
 position = Vector2( 128, 416 )
@@ -157,3 +160,6 @@ margin_bottom = 56.0
 text = "This is the text for an answer option."
 
 [node name="SettingsMenu" parent="." instance=ExtResource( 1 )]
+
+[connection signal="pressed" from="AnswerPanel/Option1" to="." method="_on_Option1_pressed"]
+[connection signal="pressed" from="AnswerPanel/Option2" to="." method="_on_Option2_pressed"]
