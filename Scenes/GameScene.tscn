@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/SettingsMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/graphics/candy butterscotch.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://textures/buttons/soft green button press.png" type="Texture" id=5]
 [ext_resource path="res://textures/buttons/soft green button hover.png" type="Texture" id=6]
 [ext_resource path="res://textures/graphics/candy sour.png" type="Texture" id=7]
+[ext_resource path="res://textures/graphics/pink bar.png" type="Texture" id=8]
 
 [node name="GameScene" type="Node2D"]
 
@@ -44,16 +45,55 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Date1" type="Sprite" parent="DatePanel"]
-position = Vector2( 88, -24 )
+[node name="Date1Affection" type="TextureProgress" parent="DatePanel"]
+margin_left = 44.0
+margin_top = -88.0
+margin_right = 134.0
+margin_bottom = -63.0
+min_value = -10.0
+max_value = 10.0
+step = 0.0
+texture_progress = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Date1" type="Sprite" parent="DatePanel/Date1Affection"]
+position = Vector2( 44, 64 )
 texture = ExtResource( 7 )
 
-[node name="Date2" type="Sprite" parent="DatePanel"]
-position = Vector2( 192, -24 )
+[node name="Date2Affection" type="TextureProgress" parent="DatePanel"]
+margin_left = 152.0
+margin_top = -88.0
+margin_right = 242.0
+margin_bottom = -63.0
+min_value = -10.0
+max_value = 10.0
+step = 0.0
+texture_progress = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Date2" type="Sprite" parent="DatePanel/Date2Affection"]
+position = Vector2( 40, 64 )
 texture = ExtResource( 7 )
 
-[node name="Date3" type="Sprite" parent="DatePanel"]
-position = Vector2( 296, -24 )
+[node name="Date3Affection" type="TextureProgress" parent="DatePanel"]
+margin_left = 256.0
+margin_top = -88.0
+margin_right = 346.0
+margin_bottom = -63.0
+min_value = -10.0
+max_value = 10.0
+step = 0.0
+texture_progress = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Date3" type="Sprite" parent="DatePanel/Date3Affection"]
+position = Vector2( 40, 64 )
 texture = ExtResource( 7 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="DatePanel"]
