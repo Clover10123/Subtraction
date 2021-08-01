@@ -135,7 +135,7 @@ func win():
 		return
 	else:
 		$AlertWindow.show()
-		update_alert_text("Error grabbing game scene.")
+		#update_alert_text("Error grabbing game scene.")
 	
 func lose():
 	print("You lost the game")
@@ -143,7 +143,7 @@ func lose():
 		return
 	else:
 		$AlertWindow.show()
-		update_alert_text("Error grabbing game scene.")
+		#update_alert_text("Error grabbing game scene.")
 
 func _on_Option1_pressed():
 	answer(answers[0])

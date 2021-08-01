@@ -53,7 +53,7 @@ func update():
 		if(dates[i].attraction <= 0):
 			dates.remove(i)
 			
-func get(i:int):
+func get(i):
 	assert(i>=0)
 	assert(i<=2)
 	return dates[i]

@@ -5,5 +5,5 @@ var element
 var texture
 
 func _init(txtr):
-	print("New character " + str(txtr) + ":" + get_class(txtr))
+	print("New character " + str(txtr) + ":" )
 	texture = txtr
