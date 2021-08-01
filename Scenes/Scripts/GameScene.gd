@@ -8,7 +8,7 @@ const Character = preload("res://Scenes/Scripts/Character.gd")
 onready var QUESTIONS_PATH = "res://questions.json"
 onready var HOST_PATH = "res://gameIntroDialogue.json"
 
-const modifier = 5
+const modifier = 100 ## todo switch back to 5
 const ROUND_QUESTION_NUM = 6
 const NUM_QUESTIONS = 60
 
@@ -26,7 +26,7 @@ var roundQuestionNumber = 0
 var dates
 var introDialogue = []
 var introDialogueIndex = 0
-
+var speedDates = []
 
 func _ready():
 	rng.randomize()
@@ -81,9 +81,9 @@ func formatQuestion():
 	if(val==0): return 6
 	return val
 
-func getQuestion():
+func getQuestion(rd=true):
 	var ret = questions[questionCounter%NUM_QUESTIONS]
-	roundQuestionNumber = (roundQuestionNumber+1)
+	if(rd): roundQuestionNumber = (roundQuestionNumber+1)
 	questionCounter = questionCounter+1
 	return ret
 	
@@ -152,19 +152,64 @@ func initIntro():
 
 	updateIntroDialogue()
 
-func answer(e):
-	dates.processAnswer(e)
-	updateDates()
-	print("Question " + str(roundQuestionNumber))
-	var smitten = dates.smitten()
-	if(smitten.size()!=0):
-		lose() ## Todo replace with speed date
+func endAnswer():
 	if(formatQuestion()!=6):
 		initQuestion()
 	else:
 		roundNum = roundNum+1
 		initRound()
 
+func answer(e):
+	dates.processAnswer(e)
+	updateDates()
+	print("Question " + str(roundQuestionNumber))
+	var smitten = dates.smitten()
+	if(smitten.size()!=0):
+		for d in smitten:
+			speedDates.push(smitten)
+		speedDate()
+		return
+	endAnswer()
+
+func speedRound(date):
+	var q1 = getQuestion(false)
+	var q2 = getQuestion(false)
+	$SpeedDatingScene.ready(character, date, q1, q2, rng)
+	$SpeedDateMusic.play()
+	$SpeedDatingScene.visible = true
+	$SpeedDatingScene.start()
+
+func speedDate():
+	if(speedDates.size() != 0):
+		var date = speedDates.pop_front()
+		speedRound(date)
+	else:
+		endSpeedDate()
+
+
+func initSpeedDate():
+	state = GameState.SPEED
+	$GameShowHost.visible = false
+	$DatePanel.visible = false
+	$PlayerSprite.visible = false
+	$youlabel.visible = false
+	$GameShowMusic.stop()
+	speedDate()
+
+func endSpeedDate():
+	$SpeedDatingScene.visible = false
+	$SpeedDateMusic.stop()
+	$GameShowHost.visible = true
+	$DatePanel.visible = true
+	$PlayerSprite.visible = true
+	$youlabel.visible = true
+	$GameShowMusic.start()
+
+	updateDates()
+	state = GameState.PANEL
+	endAnswer()
+	
+	
 func win():
 	print("You won the game")
 	if get_tree().change_scene("res://Scenes/MainScene.tscn") == OK:

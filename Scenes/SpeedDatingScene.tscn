@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://textures/graphics/youlabel.png" type="Texture" id=1]
 [ext_resource path="res://textures/buttons/soft green button.png" type="Texture" id=2]
@@ -6,8 +6,12 @@
 [ext_resource path="res://textures/characters/meth roben.png" type="Texture" id=4]
 [ext_resource path="res://textures/characters/maledate1.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/SettingsMenu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Scripts/SpeedDating.gd" type="Script" id=7]
+[ext_resource path="res://Sound/select_button_sound.mp3" type="AudioStream" id=8]
+[ext_resource path="res://Sound/scroll_button_sound.mp3" type="AudioStream" id=9]
 
 [node name="SpeedDatingScene" type="Node2D"]
+script = ExtResource( 7 )
 
 [node name="Dolly" type="Sprite" parent="."]
 position = Vector2( 504, 136 )
@@ -60,6 +64,9 @@ margin_bottom = 136.0
 texture_normal = ExtResource( 2 )
 expand = true
 stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Option1Text" type="RichTextLabel" parent="DatePanel/Option1Button"]
 margin_left = 64.0
@@ -86,9 +93,21 @@ margin_top = 8.0
 margin_right = 360.0
 margin_bottom = 56.0
 text = "Option Text"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Date" type="Sprite" parent="."]
 position = Vector2( 784, 432 )
 texture = ExtResource( 5 )
 
 [node name="SettingsMenu" parent="." instance=ExtResource( 6 )]
+
+[node name="SelectPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+
+[node name="HoverPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+
+[connection signal="pressed" from="DatePanel/Option1Button" to="." method="_on_Option1Button_pressed"]
+[connection signal="pressed" from="DatePanel/Option2Button" to="." method="_on_Option2Button_pressed"]
