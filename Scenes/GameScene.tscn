@@ -11,7 +11,6 @@
 [ext_resource path="res://Scenes/Scripts/GameScene.gd" type="Script" id=9]
 [ext_resource path="res://textures/graphics/youlabel.png" type="Texture" id=10]
 [ext_resource path="res://textures/characters/dates/femdate1.png" type="Texture" id=11]
-
 [ext_resource path="res://Sound/main_game_track.mp3" type="AudioStream" id=12]
 [ext_resource path="res://Sound/scroll_button_sound.mp3" type="AudioStream" id=13]
 [ext_resource path="res://Sound/fm_text_effect_sound.mp3" type="AudioStream" id=14]
@@ -178,7 +177,6 @@ texture = ExtResource( 10 )
 
 [node name="SettingsMenu" parent="." instance=ExtResource( 1 )]
 
-
 [node name="GameShowMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
 autoplay = true
@@ -199,6 +197,5 @@ visible = false
 stream = ExtResource( 17 )
 
 [connection signal="mouse_entered" from="AnswerPanel/Option1" to="." method="_on_Option1_mouse_entered"]
-
 [connection signal="pressed" from="AnswerPanel/Option1" to="." method="_on_Option1_pressed"]
 [connection signal="pressed" from="AnswerPanel/Option2" to="." method="_on_Option2_pressed"]

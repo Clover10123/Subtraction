@@ -52,9 +52,15 @@ func addDate(d):
 	return false
 
 func update():
+	var cont = false
 	for i in range(0,dates.size()):
 		if(dates[i].attraction <= 0):
 			dates.remove(i)
+			cont = true
+			break
+	if(cont):
+		update()
+			
 			
 func get(i):
 	assert(i>=0)

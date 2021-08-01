@@ -8,7 +8,7 @@ const Character = preload("res://Scenes/Scripts/Character.gd")
 onready var QUESTIONS_PATH = "res://questions.json"
 onready var HOST_PATH = "res://gameIntroDialogue.json"
 
-const modifier = 100 ## todo switch back to 5
+const modifier = 5
 const ROUND_QUESTION_NUM = 6
 const NUM_QUESTIONS = 60
 
@@ -88,9 +88,12 @@ func getQuestion(rd=true):
 	return ret
 	
 func updateDates():
-	$DatePanel/Date1/Date1Affection.set_value(dates.get(0).attraction)
-	$DatePanel/Date2/Date2Affection.set_value(dates.get(1).attraction)
-	$DatePanel/Date3/Date3Affection.set_value(dates.get(2).attraction)
+	if(dates.size()>=1):
+		$DatePanel/Date1/Date1Affection.set_value(dates.get(0).attraction)
+	if(dates.size()>=2):
+		$DatePanel/Date2/Date2Affection.set_value(dates.get(1).attraction)
+	if(dates.size()>=3):
+		$DatePanel/Date3/Date3Affection.set_value(dates.get(2).attraction)
 	dates.update()
 
 func initDating():
@@ -107,6 +110,8 @@ func initDating():
 	initRound()
 
 func initQuestion():
+	for i in range(0,3):
+		updateDateSprite(i)
 	dates.printString()
 	var q = getQuestion()
 	$GameShowHost/HostTextPanel/HostText.text = "Round " + str(roundNum) + ", question " + str(formatQuestion()) + ". " + str(dates.contestantsInQueue()) + " contestants in queue, " + str(dates.size()) + " remaining in current round."
@@ -166,8 +171,8 @@ func answer(e):
 	var smitten = dates.smitten()
 	if(smitten.size()!=0):
 		for d in smitten:
-			speedDates.push(smitten)
-		speedDate()
+			speedDates.push_back(d)
+		initSpeedDate()
 		return
 	endAnswer()
 
@@ -193,6 +198,7 @@ func initSpeedDate():
 	$DatePanel.visible = false
 	$PlayerSprite.visible = false
 	$youlabel.visible = false
+	$AnswerPanel.visible = false
 	$GameShowMusic.stop()
 	speedDate()
 
@@ -203,6 +209,7 @@ func endSpeedDate():
 	$DatePanel.visible = true
 	$PlayerSprite.visible = true
 	$youlabel.visible = true
+	$AnswerPanel.visible = true
 	$GameShowMusic.start()
 
 	updateDates()
@@ -223,8 +230,7 @@ func lose():
 	if get_tree().change_scene("res://Scenes/MainScene.tscn") == OK:
 		return
 	else:
-		$AlertWindow.show()
-		#update_alert_text("Error grabbing game scene.")
+		print("Error grabbing game scene")
 
 func _on_Option1_pressed():
 	if(state == GameState.PANEL):
