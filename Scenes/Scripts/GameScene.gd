@@ -25,6 +25,8 @@ var roundQuestionNumber = 0
 var dates
 
 
+
+
 func _ready():
 	rng.randomize()
 	randomize()
@@ -80,7 +82,8 @@ func initDating():
 func initQuestion():
 	dates.printString()
 	var q = getQuestion()
-	$DatePanel/Panel/QuestionLabel.text = "R" + str(roundNum) +  "Q" + str(formatQuestion()) + ": " + q.text
+	$GameShowHost/HostTextPanel/HostText.text = "Round " + str(roundNum) + ", question " + str(formatQuestion()) + ". " + str(dates.contestantsInQueue()) + " contestants in queue, " + str(dates.size()) + " remaining in current round."
+	$DatePanel/Panel/QuestionLabel.text = q.text
 	answers[0] = rng.randi_range(0,3)
 	answers[1] = (answers[0]+rng.randi_range(1,3))%4
 	$AnswerPanel/Option1/Option1Label.text = q.ans[answers[0]]

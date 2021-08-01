@@ -31,6 +31,9 @@ func moreDatesAvailable():
 func contestantsInQueue():
 	return 15-dateCounter
 
+func contestantsRemaining():
+	return contestantsInQueue()+dates.size();
+
 func size():
 	return dates.size()
 

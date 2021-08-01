@@ -20,6 +20,7 @@ func _init():
 				characters.append(load(CHARACTER_PATH+file.replace(".import", "")))
 
 	dir.list_dir_end()
+	characters.shuffle()
 
 	
 func pop():
