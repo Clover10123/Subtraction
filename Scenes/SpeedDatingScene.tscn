@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://textures/graphics/youlabel.png" type="Texture" id=1]
 [ext_resource path="res://textures/buttons/soft green button.png" type="Texture" id=2]
@@ -13,6 +13,10 @@
 [ext_resource path="res://textures/graphics/dollypodiumtext.png" type="Texture" id=11]
 [ext_resource path="res://textures/graphics/bg-stagespotlights.png" type="Texture" id=12]
 [ext_resource path="res://textures/graphics/answerboard.png" type="Texture" id=13]
+[ext_resource path="res://textures/graphics/bg-lose.png" type="Texture" id=14]
+[ext_resource path="res://textures/buttons/soft vanilla button hover.png" type="Texture" id=15]
+[ext_resource path="res://textures/buttons/soft vanilla button press.png" type="Texture" id=16]
+[ext_resource path="res://textures/buttons/soft vanilla button.png" type="Texture" id=17]
 
 [node name="SpeedDatingScene" type="Node2D"]
 script = ExtResource( 7 )
@@ -140,5 +144,39 @@ stream = ExtResource( 8 )
 [node name="HoverPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 9 )
 
+[node name="LossScreen" type="TextureRect" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DollyEnd" type="Sprite" parent="LossScreen"]
+position = Vector2( 256.394, 443.492 )
+texture = ExtResource( 3 )
+
+[node name="EndGameButton" type="TextureButton" parent="LossScreen"]
+margin_left = 400.0
+margin_top = 440.0
+margin_right = 636.0
+margin_bottom = 558.0
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndGameLabel" type="RichTextLabel" parent="LossScreen/EndGameButton"]
+margin_left = 64.0
+margin_top = 48.0
+margin_right = 160.0
+margin_bottom = 88.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "Womp womp."
+
 [connection signal="pressed" from="DatePanel/Option1Button" to="." method="_on_Option1Button_pressed"]
 [connection signal="pressed" from="DatePanel/Option2Button" to="." method="_on_Option2Button_pressed"]
+[connection signal="pressed" from="LossScreen/EndGameButton" to="." method="_on_EndGameButton_pressed"]

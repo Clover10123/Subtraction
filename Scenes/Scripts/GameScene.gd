@@ -233,19 +233,8 @@ func endSpeedDate():
 	
 func win():
 	print("You won the game")
-	if get_tree().change_scene("res://Scenes/MainScene.tscn") == OK:
-		return
-	else:
-		$AlertWindow.show()
-		#update_alert_text("Error grabbing game scene.")
-	
-func lose():
-	print("You lost the game")
-	if get_tree().change_scene("res://Scenes/MainScene.tscn") == OK:
-		return
-	else:
-		print("Error grabbing game scene")
-
+	$WinScreen.visible = true
+		
 func _on_Option1_pressed():
 	if(state == GameState.PANEL):
 		answer(answers[0])	
@@ -265,3 +254,10 @@ func _on_Option1_mouse_entered():
 func _on_Option2_mouse_entered():
 	if(state == GameState.PANEL):
 		$HoverPlayer.play()
+
+
+func _on_EndGameButton_pressed():
+	if get_tree().change_scene("res://Scenes/MainScene.tscn") == OK:
+		return
+	else:
+		print("Error grabbing game scene")

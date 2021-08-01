@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Scenes/SettingsMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/characters/dollythegameshowhost.png" type="Texture" id=2]
@@ -6,9 +6,11 @@
 [ext_resource path="res://textures/buttons/soft green button.png" type="Texture" id=4]
 [ext_resource path="res://textures/buttons/soft green button press.png" type="Texture" id=5]
 [ext_resource path="res://textures/buttons/soft green button hover.png" type="Texture" id=6]
+[ext_resource path="res://textures/graphics/bg-win.png" type="Texture" id=7]
 [ext_resource path="res://textures/graphics/pink bar.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/Scripts/GameScene.gd" type="Script" id=9]
 [ext_resource path="res://textures/graphics/youlabel.png" type="Texture" id=10]
+[ext_resource path="res://textures/buttons/soft vanilla button hover.png" type="Texture" id=11]
 [ext_resource path="res://Sound/main_game_track.mp3" type="AudioStream" id=12]
 [ext_resource path="res://Sound/scroll_button_sound.mp3" type="AudioStream" id=13]
 [ext_resource path="res://Sound/fm_text_effect_sound.mp3" type="AudioStream" id=14]
@@ -23,6 +25,8 @@
 [ext_resource path="res://textures/graphics/datepanelshort.png" type="Texture" id=23]
 [ext_resource path="res://textures/graphics/datepanelbig.png" type="Texture" id=24]
 [ext_resource path="res://textures/graphics/datechair.png" type="Texture" id=25]
+[ext_resource path="res://textures/buttons/soft vanilla button press.png" type="Texture" id=26]
+[ext_resource path="res://textures/buttons/soft vanilla button.png" type="Texture" id=27]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource( 9 )
@@ -255,7 +259,41 @@ stream = ExtResource( 17 )
 [node name="ElimSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
 
+[node name="WinScreen" type="TextureRect" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DollyEnd" type="Sprite" parent="WinScreen"]
+position = Vector2( 368, 416 )
+texture = ExtResource( 2 )
+
+[node name="EndGameButton" type="TextureButton" parent="WinScreen/DollyEnd"]
+margin_left = -192.0
+margin_top = -360.0
+margin_right = 44.0
+margin_bottom = -242.0
+texture_normal = ExtResource( 27 )
+texture_pressed = ExtResource( 26 )
+texture_hover = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EndGameLabel" type="RichTextLabel" parent="WinScreen/DollyEnd/EndGameButton"]
+margin_left = 88.0
+margin_top = 48.0
+margin_right = 184.0
+margin_bottom = 88.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "I'm rich!"
+
 [connection signal="mouse_entered" from="AnswerPanel/Option1" to="." method="_on_Option1_mouse_entered"]
 [connection signal="pressed" from="AnswerPanel/Option1" to="." method="_on_Option1_pressed"]
 [connection signal="mouse_entered" from="AnswerPanel/Option2" to="." method="_on_Option2_mouse_entered"]
 [connection signal="pressed" from="AnswerPanel/Option2" to="." method="_on_Option2_pressed"]
+[connection signal="pressed" from="WinScreen/DollyEnd/EndGameButton" to="." method="_on_EndGameButton_pressed"]

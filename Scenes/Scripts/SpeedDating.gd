@@ -120,10 +120,7 @@ func answer(e):
 
 func lose():
 	print("You lost the game")
-	if get_tree().change_scene("res://Scenes/MainScene.tscn") == OK:
-		return
-	else:
-		print("Error grabbing game scene")
+	$LossScreen.visible = true
 	
 func _on_Option1Button_pressed():
 	if(state == SpeedState.SPEED):
@@ -133,3 +130,10 @@ func _on_Option1Button_pressed():
 func _on_Option2Button_pressed():
 	if(state == SpeedState.SPEED):
 		answer(answers[1])
+
+
+func _on_EndGameButton_pressed():
+	if get_tree().change_scene("res://Scenes/MainScene.tscn") == OK:
+		return
+	else:
+		print("Error grabbing game scene")
