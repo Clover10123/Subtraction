@@ -2,7 +2,7 @@ const Date = preload("res://Scenes/Scripts/Date.gd")
 const Types = preload("res://Scenes/Scripts/Types.gd")
 const Characters = preload("res://Scenes/Scripts/Characters.gd")
 
-const MAX_NUM_DATES = 15
+const MAX_NUM_DATES = 6
 
 var dates = []
 
@@ -29,7 +29,7 @@ func moreDatesAvailable():
 	return dateCounter < MAX_NUM_DATES
 
 func contestantsInQueue():
-	return 15-dateCounter
+	return 6-dateCounter
 
 func contestantsRemaining():
 	return contestantsInQueue()+dates.size();
