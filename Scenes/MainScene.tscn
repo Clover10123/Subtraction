@@ -129,6 +129,5 @@ __meta__ = {
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
-
 [connection signal="pressed" from="ButtonPanel/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

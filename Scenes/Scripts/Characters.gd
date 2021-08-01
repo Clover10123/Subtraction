@@ -23,4 +23,4 @@ func _init():
 
 	
 func pop():
-	return characters.pop()
+	return characters.pop_front()

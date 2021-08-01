@@ -49,27 +49,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Date1Affection" type="TextureProgress" parent="DatePanel"]
-margin_left = 44.0
-margin_top = -88.0
-margin_right = 134.0
-margin_bottom = -63.0
-step = 0.0
-value = 50.0
-texture_progress = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Date1" type="Sprite" parent="DatePanel/Date1Affection"]
-position = Vector2( 44, 64 )
+[node name="Date1" type="Sprite" parent="DatePanel"]
+position = Vector2( 88, -24 )
 texture = ExtResource( 11 )
 
-[node name="Date2Affection" type="TextureProgress" parent="DatePanel"]
-margin_left = 152.0
-margin_top = -88.0
-margin_right = 242.0
-margin_bottom = -63.0
+[node name="Date1Affection" type="TextureProgress" parent="DatePanel/Date1"]
+margin_left = -44.0
+margin_top = -144.0
+margin_right = 46.0
+margin_bottom = -119.0
 step = 0.0
 value = 50.0
 texture_progress = ExtResource( 8 )
@@ -77,15 +65,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Date2" type="Sprite" parent="DatePanel/Date2Affection"]
-position = Vector2( 40, 64 )
+[node name="Date2" type="Sprite" parent="DatePanel"]
+position = Vector2( 192, -24 )
 texture = ExtResource( 7 )
 
-[node name="Date3Affection" type="TextureProgress" parent="DatePanel"]
-margin_left = 256.0
-margin_top = -88.0
-margin_right = 346.0
-margin_bottom = -63.0
+[node name="Date2Affection" type="TextureProgress" parent="DatePanel/Date2"]
+margin_left = -40.0
+margin_top = -144.0
+margin_right = 50.0
+margin_bottom = -119.0
 step = 0.0
 value = 50.0
 texture_progress = ExtResource( 8 )
@@ -93,15 +81,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Date3" type="Sprite" parent="DatePanel/Date3Affection"]
-position = Vector2( 40, 64 )
+[node name="Date3" type="Sprite" parent="DatePanel"]
+position = Vector2( 296, -24 )
 texture = ExtResource( 7 )
 
-[node name="QuestionLabel" type="RichTextLabel" parent="DatePanel"]
+[node name="Date3Affection" type="TextureProgress" parent="DatePanel/Date3"]
+margin_left = -40.0
+margin_top = -144.0
+margin_right = 50.0
+margin_bottom = -119.0
+step = 0.0
+value = 50.0
+texture_progress = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="DatePanel"]
+margin_top = 40.0
+margin_right = 383.0
+margin_bottom = 176.0
+
+[node name="QuestionLabel" type="RichTextLabel" parent="DatePanel/Panel"]
 margin_left = 16.0
-margin_top = 48.0
+margin_top = 32.0
 margin_right = 368.0
-margin_bottom = 168.0
+margin_bottom = 152.0
 text = "Contains text for the date questions. A small indicator will appear beneath each character's face, to indicate who is asking the question."
 __meta__ = {
 "_edit_use_anchors_": false
@@ -165,6 +170,5 @@ position = Vector2( 128, 408 )
 texture = ExtResource( 10 )
 
 [node name="SettingsMenu" parent="." instance=ExtResource( 1 )]
-
 [connection signal="pressed" from="AnswerPanel/Option1" to="." method="_on_Option1_pressed"]
 [connection signal="pressed" from="AnswerPanel/Option2" to="." method="_on_Option2_pressed"]

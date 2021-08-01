@@ -63,9 +63,9 @@ func getQuestion():
 	return ret
 	
 func updateDates():
-	$DatePanel/Date1Affection.set_value(dates.get(0).attraction)
-	$DatePanel/Date2Affection.set_value(dates.get(1).attraction)
-	$DatePanel/Date3Affection.set_value(dates.get(2).attraction)
+	$DatePanel/Date1/Date1Affection.set_value(dates.get(0).attraction)
+	$DatePanel/Date2/Date2Affection.set_value(dates.get(1).attraction)
+	$DatePanel/Date3/Date3Affection.set_value(dates.get(2).attraction)
 	dates.update()
 
 func initDating():
@@ -80,7 +80,7 @@ func initDating():
 func initQuestion():
 	dates.printString()
 	var q = getQuestion()
-	$DatePanel/QuestionLabel.text = "R" + str(roundNum) +  "Q" + str(formatQuestion()) + ": " + q.text
+	$DatePanel/Panel/QuestionLabel.text = "R" + str(roundNum) +  "Q" + str(formatQuestion()) + ": " + q.text
 	answers[0] = rng.randi_range(0,3)
 	answers[1] = (answers[0]+rng.randi_range(1,3))%4
 	$AnswerPanel/Option1/Option1Label.text = q.ans[answers[0]]
@@ -90,14 +90,14 @@ func updateDateSprite(i):
 	var n
 	match i:
 			0: 
-				n = $DatePanel/Date1Affection/Date1
+				n = $DatePanel/Date1
 			1:
-				n = $DatePanel/Date2Affection/Date2
+				n = $DatePanel/Date2
 			2:
-				n = $DatePanel/Date3Affection/Date3
+				n = $DatePanel/Date3
 	var t = dates.get(i).texture
 	if(t != null):
-		n.set_texture()
+		n.set_texture(t)
 	else:
 		print("Warning: texture null for date " + str(i+1))
 				
