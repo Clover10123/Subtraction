@@ -1,5 +1,6 @@
 const Date = preload("res://Scenes/Scripts/Date.gd")
 const Types = preload("res://Scenes/Scripts/Types.gd")
+const Characters = preload("res://Scenes/Scripts/Characters.gd")
 
 const MAX_NUM_DATES = 15
 
@@ -10,14 +11,16 @@ var dateCounter = 0
 var rng
 var character
 var modifier
+var characters
 
 func _init(rand, chara, mod):
 	rng = rand
 	character = chara
 	modifier = mod
+	characters = Characters.new()
 	var start = rng.randi_range(0,3)
 	for i in range(0,3):
-		var d = Date.new()
+		var d = Date.new(characters.pop())
 		d.attraction = character.attractiveness
 		d.element = (start+i)%4
 		addDate(d)
@@ -62,6 +65,8 @@ func printString():
 
 
 func addNewDates():
+	## Returns the indices of the dates that were added
+	var ret = []
 	for j in range(0,3):
 		if(dates.size() < 3):
 			print("Too few dates: " + str(dates.size()))
@@ -73,11 +78,13 @@ func addNewDates():
 						stop = false
 						break
 					if(stop):
-						var d = Date.new()
+						var d = Date.new(characters.pop())
 						d.attraction = character.attractiveness
 						d.element = (start+i)%4
 						addDate(d)
+						ret.push_back(dates.size()-1)
 						break
+	return ret
 					
 func processAnswer(e):
 	for date in dates:

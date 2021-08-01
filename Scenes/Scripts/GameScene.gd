@@ -72,6 +72,8 @@ func initDating():
 	print("Init Dating")
 	questions.shuffle()
 	dates = Dates.new(rng, character, modifier)
+	for i in range(0,3):
+		updateDateSprite(i)
 	updateDates()
 	initRound()
 
@@ -83,11 +85,28 @@ func initQuestion():
 	answers[1] = (answers[0]+rng.randi_range(1,3))%4
 	$AnswerPanel/Option1/Option1Label.text = q.ans[answers[0]]
 	$AnswerPanel/Option2/Option2Label.text = q.ans[answers[1]]
-	
+
+func updateDateSprite(i):
+	var n
+	match i:
+			0: 
+				n = $DatePanel/Date1Affection/Date1
+			1:
+				n = $DatePanel/Date2Affection/Date2
+			2:
+				n = $DatePanel/Date3Affection/Date3
+	var t = dates.get(i).texture
+	if(t != null):
+		n.set_texture()
+	else:
+		print("Warning: texture null for date " + str(i+1))
+				
 func initRound():
 	print("Init round")
 	print("Contestants in queue: " + str(dates.contestantsInQueue()))
-	dates.addNewDates()
+	var modified = dates.addNewDates()
+	for i in modified:
+		updateDateSprite(i)	
 	if(dates.size() == 0 || roundNum > 4):
 		win()
 	initQuestion()
