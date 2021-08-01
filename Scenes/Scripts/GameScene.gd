@@ -7,10 +7,8 @@ const Question = preload("res://Scenes/Scripts/Question.gd")
 const Character = preload("res://Scenes/Scripts/Character.gd")
 onready var QUESTIONS_PATH = "res://questions.json"
 
-const PANEL_SZ = 3
 const modifier = 5
 const ROUND_QUESTION_NUM = 6
-const MAX_NUM_DATES = 15
 const NUM_QUESTIONS = 60
 
 var rng = RandomNumberGenerator.new()
@@ -80,8 +78,7 @@ func initDating():
 func initQuestion():
 	dates.printString()
 	var q = getQuestion()
-	print("Question is size: " + str(q.ans.size()))
-	$DatePanel/QuestionLabel.text = "Question " + str(formatQuestion()) + ": " + q.text
+	$DatePanel/QuestionLabel.text = "R" + str(roundNum) +  "Q" + str(formatQuestion()) + ": " + q.text
 	answers[0] = rng.randi_range(0,3)
 	answers[1] = (answers[0]+rng.randi_range(1,3))%4
 	$AnswerPanel/Option1/Option1Label.text = q.ans[answers[0]]
@@ -89,7 +86,10 @@ func initQuestion():
 	
 func initRound():
 	print("Init round")
+	print("Contestants in queue: " + str(dates.contestantsInQueue()))
 	dates.addNewDates()
+	if(dates.size() == 0 || roundNum > 4):
+		win()
 	initQuestion()
 	
 func initIntro():
@@ -101,12 +101,30 @@ func answer(e):
 	dates.processAnswer(e)
 	updateDates()
 	print("Question " + str(roundQuestionNumber))
+	var smitten = dates.smitten()
+	if(smitten.size()!=0):
+		lose() ## Todo replace with speed date
 	if(formatQuestion()!=6):
 		initQuestion()
 	else:
 		roundNum = roundNum+1
 		initRound()
 
+func win():
+	print("You won the game")
+	if get_tree().change_scene("res://Scenes/MainScene.tscn") == OK:
+		return
+	else:
+		$AlertWindow.show()
+		update_alert_text("Error grabbing game scene.")
+	
+func lose():
+	print("You lost the game")
+	if get_tree().change_scene("res://Scenes/MainScene.tscn") == OK:
+		return
+	else:
+		$AlertWindow.show()
+		update_alert_text("Error grabbing game scene.")
 
 func _on_Option1_pressed():
 	answer(answers[0])
@@ -114,3 +132,4 @@ func _on_Option1_pressed():
 
 func _on_Option2_pressed():
 	answer(answers[1])
+ 
