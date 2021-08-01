@@ -8,6 +8,7 @@ func _ready():
 	intro_handler()
 
 func _on_YesButton_pressed():
+	$ConfirmPlayer.play()
 	$IntroDialoguePanel/YesButton.hide()
 	$IntroDialoguePanel/ProceedTextButton.show()
 	intro_handler()
@@ -15,12 +16,14 @@ func _on_YesButton_pressed():
 
 
 func _on_ProceedTextButton_pressed():
+	$SelectPlayer.play()
 	$IntroDialoguePanel/ProceedTextButton.disabled = true
 	intro_handler()
 	pass # Replace with function body.
 
 
 func _on_PlayButton_pressed():
+	$ConfirmPlayer.play()
 	if get_tree().change_scene("res://Scenes/GameScene.tscn") == OK:
 		return
 	else:
@@ -30,6 +33,7 @@ func _on_PlayButton_pressed():
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
+	$HostVoicePlayer.stop()
 	if anim_name == "intro2": #asks the player if they want to join the game. Opens a button that says yes
 		$IntroDialoguePanel/ProceedTextButton.hide()
 		$IntroDialoguePanel/YesButton.show()
@@ -68,9 +72,14 @@ func intro_handler():
 			animator.play("introfinal")
 
 func _on_SkipIntroButton_pressed():
+	$ConfirmPlayer.play()
 	if get_tree().change_scene("res://Scenes/GameScene.tscn") == OK:
 		return
 	else:
 		$IntroDialoguePanel/DialogueBox/DialogueText.text = "Sorry... something seems to be wrong with the game stage. Can I call you back about that?"
 		print("Error grabbing game scene. Error at IntroScene.gd. Is the file path spelled wrong?")
 	pass # Replace with function body.
+
+
+func _on_AnimationPlayer_animation_started(anim_name):
+	$HostVoicePlayer.play()

@@ -91,13 +91,21 @@ func updateDates():
 	var startSize = dates.size()
 	if(dates.size()>=1):
 		$DatePanel/Date1/Date1Affection.set_value(dates.get(0).attraction)
+	else:
+		$DatePanel/Date1/Date1Affection.set_value(0)
 	if(dates.size()>=2):
 		$DatePanel/Date2/Date2Affection.set_value(dates.get(1).attraction)
+	else:
+		$DatePanel/Date2/Date2Affection.set_value(0)
 	if(dates.size()>=3):
 		$DatePanel/Date3/Date3Affection.set_value(dates.get(2).attraction)
+	else:
+		$DatePanel/Date3/Date3Affection.set_value(0)
 	dates.update()
 	if(dates.size() < startSize):
 		$ElimSound.play()
+	for i in range(0,3):
+		updateDateSprite(i)
 
 func initDating():
 	state = GameState.PANEL
@@ -125,8 +133,6 @@ func initQuestion():
 	$AnswerPanel/Option2/Option2Label.text = q.ans[answers[1]]
 
 func updateDateSprite(i):
-	if(dates.size() < i+1):
-		return
 	var n
 	match i:
 			0: 
@@ -135,11 +141,12 @@ func updateDateSprite(i):
 				n = $DatePanel/Date2
 			2:
 				n = $DatePanel/Date3
-	var t = dates.get(i).texture
-	if(t != null):
-		n.set_texture(t)
+	var t
+	if i < dates.size():
+		t = dates.get(i).texture
 	else:
-		print("Warning: texture null for date " + str(i+1))
+		t = null
+	n.set_texture(t)
 				
 func initRound():
 	print("Init round")
@@ -218,6 +225,8 @@ func endSpeedDate():
 	$GameShowMusic.start()
 
 	updateDates()
+	if(dates.size() == 0 and dates.contestantsInQueue() == 0):
+		win()
 	state = GameState.PANEL
 	endAnswer()
 	

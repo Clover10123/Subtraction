@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://textures/graphics/card menu.png" type="Texture" id=1]
 [ext_resource path="res://textures/buttons/green button hover.png" type="Texture" id=2]
@@ -18,6 +18,9 @@
 [ext_resource path="res://textures/buttons/soft vanilla button hover.png" type="Texture" id=16]
 [ext_resource path="res://Scenes/SettingsMenu.tscn" type="PackedScene" id=17]
 [ext_resource path="res://textures/graphics/bg-introscene.png" type="Texture" id=18]
+[ext_resource path="res://Sound/fm_text_effect_sound.mp3" type="AudioStream" id=19]
+[ext_resource path="res://Sound/confirm_button_sound.mp3" type="AudioStream" id=20]
+[ext_resource path="res://Sound/select_button_sound.mp3" type="AudioStream" id=21]
 
 [sub_resource type="Animation" id=1]
 resource_name = "intro1"
@@ -180,7 +183,6 @@ margin_top = 16.0
 margin_right = 352.0
 margin_bottom = 200.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-text = "It's called, \"The Law of Subtraction.\" We're looking for a contestant to participate in the pilot episode. Sound like fun?"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -262,8 +264,18 @@ __meta__ = {
 [node name="SettingsMenu" parent="." instance=ExtResource( 17 )]
 position = Vector2( 72, 24 )
 
+[node name="HostVoicePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
+
+[node name="SelectPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
+
+[node name="ConfirmPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 20 )
+
 [connection signal="pressed" from="IntroDialoguePanel/YesButton" to="." method="_on_YesButton_pressed"]
 [connection signal="pressed" from="IntroDialoguePanel/ProceedTextButton" to="." method="_on_ProceedTextButton_pressed"]
 [connection signal="pressed" from="IntroDialoguePanel/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
 [connection signal="pressed" from="SkipIntroButton" to="." method="_on_SkipIntroButton_pressed"]

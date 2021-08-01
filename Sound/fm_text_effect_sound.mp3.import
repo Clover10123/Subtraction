@@ -11,5 +11,5 @@ dest_files=[ "res://.import/fm_text_effect_sound.mp3-49225a377fcfa2b76aec433ada7
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
