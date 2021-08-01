@@ -10,11 +10,11 @@ func _ready():
 
 func _on_PlayButton_pressed():
 	$ConfirmAudioPlayer.play()
-	if get_tree().change_scene("res://Scenes/GameScene.tscn") == OK:
+	if get_tree().change_scene("res://Scenes/IntroScene.tscn") == OK:
 		return
 	else:
 		$AlertWindow.show()
-		update_alert_text("Error grabbing game scene.")
+		update_alert_text("Error grabbing intro scene.")
 
 
 func _on_Timer_timeout():
