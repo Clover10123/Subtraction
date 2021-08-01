@@ -2,6 +2,7 @@ extends Node2D
 
 const Types = preload("res://Scenes/Scripts/Types.gd")
 const Date = preload("res://Scenes/Scripts/Date.gd")
+const Dates = preload("res://Scenes/Scripts/Dates.gd")
 const Question = preload("res://Scenes/Scripts/Question.gd")
 const Character = preload("res://Scenes/Scripts/Character.gd")
 onready var QUESTIONS_PATH = "res://questions.json"
@@ -17,18 +18,18 @@ var rng = RandomNumberGenerator.new()
 enum GameState {INTRO, PANEL, SPEED, OUTRO}
 
 var state = GameState.INTRO
-var dates = []
 var questions = []
 var answers = ["", ""]
 var character = Character.new()
 var roundNum = 0
 var questionCounter = 0
 var roundQuestionNumber = 0
-
+var dates
 
 
 func _ready():
 	rng.randomize()
+	randomize()
 	var file = File.new()
 	var err = file.open(QUESTIONS_PATH, File.READ)
 	print("File status: " + str(err))
@@ -47,94 +48,64 @@ func _ready():
 		for i in range(0,4):
 			q.ans[i] = item.answers[i]
 		questions.push_back(q)
-	gameLoop()
+	initIntro()
 
 func getCurrentQuestion():
 	return questions[(questionCounter+NUM_QUESTIONS-1)%NUM_QUESTIONS]
 
+func formatQuestion():
+	var val = roundQuestionNumber%6
+	if(val==0): return 6
+	return val
+
 func getQuestion():
 	var ret = questions[questionCounter%NUM_QUESTIONS]
+	roundQuestionNumber = (roundQuestionNumber+1)
 	questionCounter = questionCounter+1
 	return ret
 	
 func updateDates():
-	$DatePanel/Date1Affection.set_value(dates[0].attraction)
-	$DatePanel/Date2Affection.set_value(dates[1].attraction)
-	$DatePanel/Date3Affection.set_value(dates[2].attraction)
-
-
+	$DatePanel/Date1Affection.set_value(dates.get(0).attraction)
+	$DatePanel/Date2Affection.set_value(dates.get(1).attraction)
+	$DatePanel/Date3Affection.set_value(dates.get(2).attraction)
+	dates.update()
 
 func initDating():
 	print("Init Dating")
 	questions.shuffle()
-	var start = rng.randi_range(0,3)
-	for i in range(0,2):
-		var d = Date.new()
-		d.attraction = character.attractiveness
-		d.element = (start+i)%4
-		dates.push_back(d)
+	dates = Dates.new(rng, character, modifier)
 	updateDates()
 	initRound()
 
 func initQuestion():
+	dates.printString()
 	var q = getQuestion()
 	print("Question is size: " + str(q.ans.size()))
-	$DatePanel/QuestionLabel.text = q.text
+	$DatePanel/QuestionLabel.text = "Question " + str(formatQuestion()) + ": " + q.text
 	answers[0] = rng.randi_range(0,3)
 	answers[1] = (answers[0]+rng.randi_range(1,3))%4
 	$AnswerPanel/Option1/Option1Label.text = q.ans[answers[0]]
 	$AnswerPanel/Option2/Option2Label.text = q.ans[answers[1]]
 	
 func initRound():
-	while(dates.size() < 3):
-		var start = rng.randi_range(0, 3)
-		for i in range(0, 4):
-			var stop = true
-			for date in dates:
-				if(date.element == (i+start)%4):
-					stop = false
-					break
-			if(stop):
-				var d = Date.new()
-				d.attraction = character.attractiveness
-				d.element = (start+i)%4
-				dates.push_back(d)
+	print("Init round")
+	dates.addNewDates()
 	initQuestion()
 	
 func initIntro():
 	print("Intro")
 	state = GameState.PANEL
-	initDating()
-	
-func gameLoop():
-	match state:
-		GameState.INTRO:
-			initIntro()
-		GameState.PANEL:
-			if(roundNum==0):
-				initDating()
-			if(roundQuestionNumber == 0):
-				initRound()
-			elif(roundQuestionNumber < ROUND_QUESTION_NUM):
-				initQuestion()
-			
+	initDating()			
 
-func endRound():
-	print("End round")
-	roundQuestionNumber = 0
-	roundNum = roundNum+1
-	
 func answer(e):
-	for date in dates:
-		if(Types.new().compatible(date.element, e)):
-			date.attraction += modifier
-		else:
-			date.attraction -= modifier
+	dates.processAnswer(e)
 	updateDates()
-	if(roundQuestionNumber < ROUND_QUESTION_NUM-1):
+	print("Question " + str(roundQuestionNumber))
+	if(formatQuestion()!=6):
 		initQuestion()
 	else:
-		endRound()
+		roundNum = roundNum+1
+		initRound()
 
 
 func _on_Option1_pressed():

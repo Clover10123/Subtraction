@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/SettingsMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/graphics/candy butterscotch.png" type="Texture" id=2]
@@ -9,7 +9,7 @@
 [ext_resource path="res://textures/graphics/candy sour.png" type="Texture" id=7]
 [ext_resource path="res://textures/graphics/pink bar.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/Scripts/GameScene.gd" type="Script" id=9]
-[ext_resource path="res://textures/graphics/youlabel.png" type="Texture" id=9]
+[ext_resource path="res://textures/graphics/youlabel.png" type="Texture" id=10]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource( 9 )
@@ -55,7 +55,6 @@ margin_right = 134.0
 margin_bottom = -63.0
 step = 0.0
 value = 50.0
-exp_edit = true
 texture_progress = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -162,7 +161,7 @@ text = "This is the text for an answer option."
 
 [node name="youlabel" type="Sprite" parent="."]
 position = Vector2( 128, 408 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="SettingsMenu" parent="." instance=ExtResource( 1 )]
 
