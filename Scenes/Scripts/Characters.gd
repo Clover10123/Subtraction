@@ -22,3 +22,5 @@ func _init():
 	dir.list_dir_end()
 
 	
+func pop():
+	return characters.pop()

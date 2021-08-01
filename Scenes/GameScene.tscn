@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/SettingsMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/characters/dollythegameshowhost.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://textures/graphics/pink bar.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/Scripts/GameScene.gd" type="Script" id=9]
 [ext_resource path="res://textures/graphics/youlabel.png" type="Texture" id=10]
+[ext_resource path="res://textures/characters/dates/femdate1.png" type="Texture" id=11]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource( 9 )
@@ -62,7 +63,7 @@ __meta__ = {
 
 [node name="Date1" type="Sprite" parent="DatePanel/Date1Affection"]
 position = Vector2( 44, 64 )
-texture = ExtResource( 7 )
+texture = ExtResource( 11 )
 
 [node name="Date2Affection" type="TextureProgress" parent="DatePanel"]
 margin_left = 152.0
