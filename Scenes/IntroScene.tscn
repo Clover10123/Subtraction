@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://textures/graphics/card menu.png" type="Texture" id=1]
 [ext_resource path="res://textures/buttons/green button hover.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://textures/buttons/soft vanilla button press.png" type="Texture" id=15]
 [ext_resource path="res://textures/buttons/soft vanilla button hover.png" type="Texture" id=16]
 [ext_resource path="res://Scenes/SettingsMenu.tscn" type="PackedScene" id=17]
+[ext_resource path="res://textures/graphics/bg-introscene.png" type="Texture" id=18]
 
 [sub_resource type="Animation" id=1]
 resource_name = "intro1"
@@ -131,6 +132,14 @@ tracks/0/keys = {
 
 [node name="IntroScene" type="Node2D"]
 script = ExtResource( 13 )
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Dolly" type="TextureRect" parent="."]
 margin_left = 192.0
@@ -252,6 +261,7 @@ __meta__ = {
 
 [node name="SettingsMenu" parent="." instance=ExtResource( 17 )]
 position = Vector2( 72, 24 )
+
 [connection signal="pressed" from="IntroDialoguePanel/YesButton" to="." method="_on_YesButton_pressed"]
 [connection signal="pressed" from="IntroDialoguePanel/ProceedTextButton" to="." method="_on_ProceedTextButton_pressed"]
 [connection signal="pressed" from="IntroDialoguePanel/PlayButton" to="." method="_on_PlayButton_pressed"]

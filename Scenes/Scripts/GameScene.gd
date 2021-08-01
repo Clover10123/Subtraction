@@ -88,6 +88,7 @@ func getQuestion(rd=true):
 	return ret
 	
 func updateDates():
+	var startSize = dates.size()
 	if(dates.size()>=1):
 		$DatePanel/Date1/Date1Affection.set_value(dates.get(0).attraction)
 	if(dates.size()>=2):
@@ -95,6 +96,8 @@ func updateDates():
 	if(dates.size()>=3):
 		$DatePanel/Date3/Date3Affection.set_value(dates.get(2).attraction)
 	dates.update()
+	if(dates.size() < startSize):
+		$ElimSound.play()
 
 func initDating():
 	state = GameState.PANEL

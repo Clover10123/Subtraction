@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scenes/SettingsMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/characters/dollythegameshowhost.png" type="Texture" id=2]
@@ -6,11 +6,9 @@
 [ext_resource path="res://textures/buttons/soft green button.png" type="Texture" id=4]
 [ext_resource path="res://textures/buttons/soft green button press.png" type="Texture" id=5]
 [ext_resource path="res://textures/buttons/soft green button hover.png" type="Texture" id=6]
-[ext_resource path="res://textures/graphics/candy sour.png" type="Texture" id=7]
 [ext_resource path="res://textures/graphics/pink bar.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/Scripts/GameScene.gd" type="Script" id=9]
 [ext_resource path="res://textures/graphics/youlabel.png" type="Texture" id=10]
-[ext_resource path="res://textures/characters/dates/femdate1.png" type="Texture" id=11]
 [ext_resource path="res://Sound/main_game_track.mp3" type="AudioStream" id=12]
 [ext_resource path="res://Sound/scroll_button_sound.mp3" type="AudioStream" id=13]
 [ext_resource path="res://Sound/fm_text_effect_sound.mp3" type="AudioStream" id=14]
@@ -18,47 +16,85 @@
 [ext_resource path="res://Scenes/SpeedDatingScene.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Sound/speed_dating.mp3" type="AudioStream" id=17]
 [ext_resource path="res://Sound/484344__inspectorj__bike-bell-ding-single-01-01.wav" type="AudioStream" id=18]
+[ext_resource path="res://textures/graphics/bg-gameshowstage.png" type="Texture" id=19]
+[ext_resource path="res://textures/graphics/dollypodium.png" type="Texture" id=20]
+[ext_resource path="res://textures/graphics/dollypodiumtext.png" type="Texture" id=21]
+[ext_resource path="res://textures/graphics/answerboard.png" type="Texture" id=22]
+[ext_resource path="res://textures/graphics/datepanelshort.png" type="Texture" id=23]
+[ext_resource path="res://textures/graphics/datepanelbig.png" type="Texture" id=24]
+[ext_resource path="res://textures/graphics/datechair.png" type="Texture" id=25]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource( 9 )
 
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 1008.0
+margin_bottom = 592.0
+texture = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="GameShowHost" type="Sprite" parent="."]
-position = Vector2( 112, 88 )
+position = Vector2( 112, 112 )
 texture = ExtResource( 2 )
 
-[node name="HostTextPanel" type="Panel" parent="GameShowHost"]
+[node name="HostTextPanel" type="TextureRect" parent="GameShowHost"]
 margin_left = -104.0
 margin_top = 16.0
 margin_right = 128.0
 margin_bottom = 208.0
+texture = ExtResource( 20 )
 __meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
+"_edit_lock_": true
 }
+
+[node name="dollypodiumtext" type="Sprite" parent="GameShowHost/HostTextPanel"]
+position = Vector2( 128, 128 )
+texture = ExtResource( 21 )
 
 [node name="HostText" type="RichTextLabel" parent="GameShowHost/HostTextPanel"]
-margin_left = 16.0
-margin_top = 14.0
-margin_right = 208.0
-margin_bottom = 182.0
-text = "This is where the host will talk to the player. This little butterscotch candy says, \"I'm the placeholder for the host's body sprite!\" This panel is where game events will be announced via text."
+margin_left = 32.0
+margin_top = 54.0
+margin_right = 224.0
+margin_bottom = 222.0
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="DatePanel" type="Panel" parent="."]
+[node name="DatePanel" type="TextureRect" parent="."]
 margin_left = 640.0
-margin_top = 384.0
-margin_right = 1023.0
-margin_bottom = 562.0
+margin_top = 352.0
+margin_right = 1024.0
+margin_bottom = 544.0
+texture = ExtResource( 24 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="DateChair1" type="Sprite" parent="DatePanel"]
+position = Vector2( 192, 40 )
+texture = ExtResource( 25 )
+
+[node name="DateChair2" type="Sprite" parent="DatePanel"]
+position = Vector2( 88, 40 )
+texture = ExtResource( 25 )
+
+[node name="DateChair3" type="Sprite" parent="DatePanel"]
+position = Vector2( 296, 40 )
+texture = ExtResource( 25 )
 
 [node name="Date1" type="Sprite" parent="DatePanel"]
-position = Vector2( 88, -24 )
-texture = ExtResource( 11 )
+position = Vector2( 88, -8 )
+
+[node name="AffectionBG1" type="ColorRect" parent="DatePanel/Date1"]
+margin_left = -44.0
+margin_top = -144.0
+margin_right = 48.0
+margin_bottom = -120.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Date1Affection" type="TextureProgress" parent="DatePanel/Date1"]
 margin_left = -44.0
@@ -73,14 +109,22 @@ __meta__ = {
 }
 
 [node name="Date2" type="Sprite" parent="DatePanel"]
-position = Vector2( 192, -24 )
-texture = ExtResource( 7 )
+position = Vector2( 192, -8 )
+
+[node name="AffectionBG2" type="ColorRect" parent="DatePanel/Date2"]
+margin_left = -40.0
+margin_top = -144.0
+margin_right = 52.0
+margin_bottom = -120.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Date2Affection" type="TextureProgress" parent="DatePanel/Date2"]
 margin_left = -40.0
-margin_top = -144.0
+margin_top = -145.0
 margin_right = 50.0
-margin_bottom = -119.0
+margin_bottom = -120.0
 step = 0.0
 value = 50.0
 texture_progress = ExtResource( 8 )
@@ -89,8 +133,16 @@ __meta__ = {
 }
 
 [node name="Date3" type="Sprite" parent="DatePanel"]
-position = Vector2( 296, -24 )
-texture = ExtResource( 7 )
+position = Vector2( 296, -8 )
+
+[node name="AffectionBG3" type="ColorRect" parent="DatePanel/Date3"]
+margin_left = -40.0
+margin_top = -144.0
+margin_right = 52.0
+margin_bottom = -120.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Date3Affection" type="TextureProgress" parent="DatePanel/Date3"]
 margin_left = -40.0
@@ -104,17 +156,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="DatePanel"]
-margin_top = 40.0
+[node name="Panel" type="TextureRect" parent="DatePanel"]
+margin_top = 56.0
 margin_right = 383.0
-margin_bottom = 176.0
+margin_bottom = 192.0
+texture = ExtResource( 23 )
 
 [node name="QuestionLabel" type="RichTextLabel" parent="DatePanel/Panel"]
 margin_left = 16.0
-margin_top = 32.0
+margin_top = 48.0
 margin_right = 368.0
-margin_bottom = 152.0
-text = "Contains text for the date questions. A small indicator will appear beneath each character's face, to indicate who is asking the question."
+margin_bottom = 126.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -123,19 +176,20 @@ __meta__ = {
 position = Vector2( 128, 416 )
 texture = ExtResource( 3 )
 
-[node name="AnswerPanel" type="Panel" parent="."]
-margin_left = 256.0
-margin_top = 40.0
-margin_right = 624.0
-margin_bottom = 202.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="AnswerPanel" type="TextureRect" parent="."]
+margin_left = 248.0
+margin_top = 16.0
+margin_right = 688.0
+margin_bottom = 240.0
+texture = ExtResource( 22 )
+expand = true
+stretch_mode = 5
 
 [node name="Option1" type="TextureButton" parent="AnswerPanel"]
-margin_top = 16.0
-margin_right = 64.0
-margin_bottom = 80.0
+margin_left = 48.0
+margin_top = 48.0
+margin_right = 112.0
+margin_bottom = 112.0
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 6 )
@@ -150,12 +204,13 @@ margin_left = 64.0
 margin_top = 8.0
 margin_right = 344.0
 margin_bottom = 56.0
-text = "This is the text for an answer option."
+custom_colors/default_color = Color( 0, 0, 0, 1 )
 
 [node name="Option2" type="TextureButton" parent="AnswerPanel"]
-margin_top = 80.0
-margin_right = 64.0
-margin_bottom = 144.0
+margin_left = 48.0
+margin_top = 112.0
+margin_right = 112.0
+margin_bottom = 176.0
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 6 )
@@ -170,7 +225,7 @@ margin_left = 64.0
 margin_top = 8.0
 margin_right = 344.0
 margin_bottom = 56.0
-text = "This is the text for an answer option."
+custom_colors/default_color = Color( 0, 0, 0, 1 )
 
 [node name="youlabel" type="Sprite" parent="."]
 position = Vector2( 128, 408 )
@@ -202,4 +257,5 @@ stream = ExtResource( 18 )
 
 [connection signal="mouse_entered" from="AnswerPanel/Option1" to="." method="_on_Option1_mouse_entered"]
 [connection signal="pressed" from="AnswerPanel/Option1" to="." method="_on_Option1_pressed"]
+[connection signal="mouse_entered" from="AnswerPanel/Option2" to="." method="_on_Option2_mouse_entered"]
 [connection signal="pressed" from="AnswerPanel/Option2" to="." method="_on_Option2_pressed"]
