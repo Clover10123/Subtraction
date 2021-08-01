@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/speed_dating.mp3-64fd04aaf492db643b409e1d74401110.mp3str"
+
+[deps]
+
+source_file="res://Sound/speed_dating.mp3"
+dest_files=[ "res://.import/speed_dating.mp3-64fd04aaf492db643b409e1d74401110.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/nb_text_effect_sound.mp3-b2c664bcd9017735050ccf4a2ed94306.mp3str"
+
+[deps]
+
+source_file="res://Sound/nb_text_effect_sound.mp3"
+dest_files=[ "res://.import/nb_text_effect_sound.mp3-b2c664bcd9017735050ccf4a2ed94306.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

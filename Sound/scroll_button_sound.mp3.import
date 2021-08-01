@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/scroll_button_sound.mp3-001f9396f3409f498610b8149b2c82a8.mp3str"
+
+[deps]
+
+source_file="res://Sound/scroll_button_sound.mp3"
+dest_files=[ "res://.import/scroll_button_sound.mp3-001f9396f3409f498610b8149b2c82a8.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

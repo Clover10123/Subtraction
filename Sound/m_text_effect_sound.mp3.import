@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/m_text_effect_sound.mp3-4468637fddaf02db2a84319c34070c70.mp3str"
+
+[deps]
+
+source_file="res://Sound/m_text_effect_sound.mp3"
+dest_files=[ "res://.import/m_text_effect_sound.mp3-4468637fddaf02db2a84319c34070c70.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

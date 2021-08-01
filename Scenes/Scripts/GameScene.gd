@@ -61,6 +61,7 @@ func _input(event):
 		click_handler()
 
 func click_handler():
+	$SelectPlayer.play()
 	if state == GameState.INTRO:
 		if introDialogueIndex < introDialogue.size()-1:
 			introDialogueIndex = introDialogueIndex+1
@@ -69,6 +70,7 @@ func click_handler():
 			initDating()
 
 func updateIntroDialogue():
+	# $HostAudio.play()
 	$GameShowHost/HostTextPanel/HostText.text = introDialogue[introDialogueIndex]
 	
 func getCurrentQuestion():
@@ -180,9 +182,21 @@ func lose():
 		#update_alert_text("Error grabbing game scene.")
 
 func _on_Option1_pressed():
-	answer(answers[0])
+	if(state == GameState.PANEL):
+		answer(answers[0])	
 
 
 func _on_Option2_pressed():
-	answer(answers[1])
+	if(state == GameState.PANEL):
+		answer(answers[1])
  
+
+
+func _on_Option1_mouse_entered():
+	if(state == GameState.PANEL):
+		$HoverPlayer.play()
+
+
+func _on_Option2_mouse_entered():
+	if(state == GameState.PANEL):
+		$HoverPlayer.play()

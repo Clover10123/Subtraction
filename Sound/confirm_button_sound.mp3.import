@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/confirm_button_sound.mp3-47014aae17033dac448aab2bd9154514.mp3str"
+
+[deps]
+
+source_file="res://Sound/confirm_button_sound.mp3"
+dest_files=[ "res://.import/confirm_button_sound.mp3-47014aae17033dac448aab2bd9154514.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

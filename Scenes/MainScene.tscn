@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/SettingsMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/graphics/phone large content window.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://textures/graphics/name card.png" type="Texture" id=7]
 [ext_resource path="res://Scenes/Scripts/MainScene.gd" type="Script" id=8]
 [ext_resource path="res://textures/graphics/phone small content sign.png" type="Texture" id=9]
+[ext_resource path="res://Sound/menu_track.mp3" type="AudioStream" id=10]
+[ext_resource path="res://Sound/confirm_button_sound.mp3" type="AudioStream" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "intro"
@@ -129,5 +131,13 @@ __meta__ = {
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="MenuMusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+autoplay = true
+
+[node name="ConfirmAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
 [connection signal="pressed" from="ButtonPanel/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
