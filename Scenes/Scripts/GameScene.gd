@@ -122,6 +122,8 @@ func initQuestion():
 	$AnswerPanel/Option2/Option2Label.text = q.ans[answers[1]]
 
 func updateDateSprite(i):
+	if(dates.size() < i+1):
+		return
 	var n
 	match i:
 			0: 

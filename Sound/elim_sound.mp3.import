@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/elim_sound.mp3-d915a679e551f86f3a126485305e4708.mp3str"
+
+[deps]
+
+source_file="res://Sound/elim_sound.mp3"
+dest_files=[ "res://.import/elim_sound.mp3-d915a679e551f86f3a126485305e4708.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
