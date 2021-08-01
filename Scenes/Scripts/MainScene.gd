@@ -9,7 +9,7 @@ func _ready():
 
 
 func _on_PlayButton_pressed():
-	#$ConfirmAudioPlayer.play()
+	$ConfirmAudioPlayer.play()
 	if get_tree().change_scene("res://Scenes/GameScene.tscn") == OK:
 		return
 	else:
