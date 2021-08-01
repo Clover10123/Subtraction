@@ -6,6 +6,7 @@ const Dates = preload("res://Scenes/Scripts/Dates.gd")
 const Question = preload("res://Scenes/Scripts/Question.gd")
 const Character = preload("res://Scenes/Scripts/Character.gd")
 onready var QUESTIONS_PATH = "res://questions.json"
+onready var HOST_PATH = "res://gameIntroDialogue.json"
 
 const modifier = 5
 const ROUND_QUESTION_NUM = 6
@@ -23,8 +24,8 @@ var roundNum = 0
 var questionCounter = 0
 var roundQuestionNumber = 0
 var dates
-
-
+var introDialogue = []
+var introDialogueIndex = 0
 
 
 func _ready():
@@ -32,24 +33,44 @@ func _ready():
 	randomize()
 	var file = File.new()
 	var err = file.open(QUESTIONS_PATH, File.READ)
-	print("File status: " + str(err))
-	print("File path: " + file.get_path_absolute())
-	print("File len: " + str(file.get_len()))
+	assert(err == OK)
 	var content = file.get_as_text()
 	file.close()
 	var p = JSON.parse(content)
-	if p.error != OK:
-		print("Error line: " + str(p.get_error_line()))
-		print("Error: " + p.get_error_string())
-		print("Error code: " + str(p.error))
+	assert(p.error == OK)
 	for item in p.result:
 		var q = Question.new()
 		q.text = item.question
 		for i in range(0,4):
 			q.ans[i] = item.answers[i]
 		questions.push_back(q)
+
+	var hostFile = File.new()
+	var err2 = hostFile.open(HOST_PATH, File.READ)
+	assert(err2 == OK)
+	var hostContent = hostFile.get_as_text()
+	var p2 = JSON.parse(hostContent)
+	assert(p2.error == OK)
+	for item in p2.result:
+		introDialogue.push_back(item)
+
 	initIntro()
 
+func _input(event):
+	if event.is_action_pressed("click"):
+		click_handler()
+
+func click_handler():
+	if state == GameState.INTRO:
+		if introDialogueIndex < introDialogue.size()-1:
+			introDialogueIndex = introDialogueIndex+1
+			updateIntroDialogue()
+		else:
+			initDating()
+
+func updateIntroDialogue():
+	$GameShowHost/HostTextPanel/HostText.text = introDialogue[introDialogueIndex]
+	
 func getCurrentQuestion():
 	return questions[(questionCounter+NUM_QUESTIONS-1)%NUM_QUESTIONS]
 
@@ -71,7 +92,11 @@ func updateDates():
 	dates.update()
 
 func initDating():
+	state = GameState.PANEL
 	print("Init Dating")
+	$AnswerPanel/Option1.disabled = false
+	$AnswerPanel/Option2.disabled = false
+
 	questions.shuffle()
 	dates = Dates.new(rng, character, modifier)
 	for i in range(0,3):
@@ -116,8 +141,14 @@ func initRound():
 	
 func initIntro():
 	print("Intro")
-	state = GameState.PANEL
-	initDating()			
+	state = GameState.INTRO
+
+	# Disable buttons
+
+	$AnswerPanel/Option1.disabled = true
+	$AnswerPanel/Option2.disabled = true
+
+	updateIntroDialogue()
 
 func answer(e):
 	dates.processAnswer(e)
