@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://textures/graphics/card menu.png" type="Texture" id=1]
 [ext_resource path="res://textures/buttons/green button hover.png" type="Texture" id=2]
@@ -13,10 +13,14 @@
 [ext_resource path="res://textures/buttons/play button.png" type="Texture" id=11]
 [ext_resource path="res://textures/buttons/play button hover.png" type="Texture" id=12]
 [ext_resource path="res://Scenes/Scripts/IntroScene.gd" type="Script" id=13]
+[ext_resource path="res://textures/buttons/soft vanilla button.png" type="Texture" id=14]
+[ext_resource path="res://textures/buttons/soft vanilla button press.png" type="Texture" id=15]
+[ext_resource path="res://textures/buttons/soft vanilla button hover.png" type="Texture" id=16]
+[ext_resource path="res://Scenes/SettingsMenu.tscn" type="PackedScene" id=17]
 
 [sub_resource type="Animation" id=1]
 resource_name = "intro1"
-length = 5.0
+length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("IntroDialoguePanel/DialogueBox/DialogueText:text")
 tracks/0/interp = 1
@@ -44,6 +48,85 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ "", "It's", "It's called,", "It's called, \"Th", "It's called, \"The", "It's called, \"The L", "It's called, \"The Law", "It's called, \"The Law o", "It's called, \"The Law of", "It's called, \"The Law of S", "It's called, \"The Law of Sub", "It's called, \"The Law of Subtr", "It's called, \"The Law of Subtrac", "It's called, \"The Law of Subtractio", "It's called, \"The Law of Subtraction.\"", "It's called, \"The Law of Subtraction.\"", "It's called, \"The Law of Subtraction.\" We're", "It's called, \"The Law of Subtraction.\" We're loo", "It's called, \"The Law of Subtraction.\" We're looking", "It's called, \"The Law of Subtraction.\" We're looking for ", "It's called, \"The Law of Subtraction.\" We're looking for a con", "It's called, \"The Law of Subtraction.\" We're looking for a contestant", "It's called, \"The Law of Subtraction.\" We're looking for a contestant to", "It's called, \"The Law of Subtraction.\" We're looking for a contestant to par", "It's called, \"The Law of Subtraction.\" We're looking for a contestant to parti", "It's called, \"The Law of Subtraction.\" We're looking for a contestant to partici", "It's called, \"The Law of Subtraction.\" We're looking for a contestant to participate", "It's called, \"The Law of Subtraction.\" We're looking for a contestant to participate in", "It's called, \"The Law of Subtraction.\" We're looking for a contestant to participate in the ", "It's called, \"The Law of Subtraction.\" We're looking for a contestant to participate in the pi", "It's called, \"The Law of Subtraction.\" We're looking for a contestant to participate in the pilot", "It's called, \"The Law of Subtraction.\" We're looking for a contestant to participate in the pilot ep", "It's called, \"The Law of Subtraction.\" We're looking for a contestant to participate in the pilot epi", "It's called, \"The Law of Subtraction.\" We're looking for a contestant to participate in the pilot episode.", "It's called, \"The Law of Subtraction.\" We're looking for a contestant to participate in the pilot episode. Sound", "It's called, \"The Law of Subtraction.\" We're looking for a contestant to participate in the pilot episode. Sound like", "It's called, \"The Law of Subtraction.\" We're looking for a contestant to participate in the pilot episode. Sound like fun?" ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "intro3"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("IntroDialoguePanel/DialogueBox/DialogueText:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.5, 0.6, 0.7, 0.9, 1, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "", "Great!", "Great! Thi", "Great! This w", "Great! This wil", "Great! This will be", "Great! This will be TONS", "Great! This will be TONS of", "Great! This will be TONS of fun!", "Great! This will be TONS of fun! Th", "Great! This will be TONS of fun! The ", "Great! This will be TONS of fun! The ru", "Great! This will be TONS of fun! The rules", "Great! This will be TONS of fun! The rules of", "Great! This will be TONS of fun! The rules of the", "Great! This will be TONS of fun! The rules of the game", "Great! This will be TONS of fun! The rules of the game are", "Great! This will be TONS of fun! The rules of the game are sim", "Great! This will be TONS of fun! The rules of the game are simple. " ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "intro4"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("IntroDialoguePanel/DialogueBox/DialogueText:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "", "I'm", "I'm going", "I'm going to", "I'm going to set yo", "I'm going to set you up", "I'm going to set you up with", "I'm going to set you up with tons of", "I'm going to set you up with tons of rom", "I'm going to set you up with tons of roman", "I'm going to set you up with tons of romantic", "I'm going to set you up with tons of romantic dates,", "I'm going to set you up with tons of romantic dates, and", "I'm going to set you up with tons of romantic dates, and by", "I'm going to set you up with tons of romantic dates, and by the", "I'm going to set you up with tons of romantic dates, and by the end", "I'm going to set you up with tons of romantic dates, and by the end of", "I'm going to set you up with tons of romantic dates, and by the end of the", "I'm going to set you up with tons of romantic dates, and by the end of the show,", "I'm going to set you up with tons of romantic dates, and by the end of the show, we", "I'm going to set you up with tons of romantic dates, and by the end of the show, we will", "I'm going to set you up with tons of romantic dates, and by the end of the show, we will pair", "I'm going to set you up with tons of romantic dates, and by the end of the show, we will pair you", "I'm going to set you up with tons of romantic dates, and by the end of the show, we will pair you with", "I'm going to set you up with tons of romantic dates, and by the end of the show, we will pair you with a", "I'm going to set you up with tons of romantic dates, and by the end of the show, we will pair you with a partn", "I'm going to set you up with tons of romantic dates, and by the end of the show, we will pair you with a partner", "I'm going to set you up with tons of romantic dates, and by the end of the show, we will pair you with a partner who", "I'm going to set you up with tons of romantic dates, and by the end of the show, we will pair you with a partner who is", "I'm going to set you up with tons of romantic dates, and by the end of the show, we will pair you with a partner who is over the m", "I'm going to set you up with tons of romantic dates, and by the end of the show, we will pair you with a partner who is over the moon", "I'm going to set you up with tons of romantic dates, and by the end of the show, we will pair you with a partner who is over the moon a", "I'm going to set you up with tons of romantic dates, and by the end of the show, we will pair you with a partner who is over the moon about ", "I'm going to set you up with tons of romantic dates, and by the end of the show, we will pair you with a partner who is over the moon about you!" ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "intro5"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("IntroDialoguePanel/DialogueBox/DialogueText:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.5, 2.6, 2.7, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.7, 3.8, 3.9, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "", "But", "But if", "But if you", "But if you c", "But if you can", "But if you can g", "But if you can get", "But if you can get thr", "But if you can get through", "But if you can get through e", "But if you can get through ev", "But if you can get through eve", "But if you can get through ever", "But if you can get through every", "But if you can get through every rou", "But if you can get through every round", "But if you can get through every round of", "But if you can get through every round of dates", "But if you can get through every round of dates with", "But if you can get through every round of dates without", "But if you can get through every round of dates without get", "But if you can get through every round of dates without getting", "But if you can get through every round of dates without getting a", "But if you can get through every round of dates without getting any", "But if you can get through every round of dates without getting anyone", "But if you can get through every round of dates without getting anyone to", "But if you can get through every round of dates without getting anyone to lik", "But if you can get through every round of dates without getting anyone to like yo", "But if you can get through every round of dates without getting anyone to like you", "But if you can get through every round of dates without getting anyone to like you.", "But if you can get through every round of dates without getting anyone to like you..", "But if you can get through every round of dates without getting anyone to like you...", "But if you can get through every round of dates without getting anyone to like you... we'll ", "But if you can get through every round of dates without getting anyone to like you... we'll give ", "But if you can get through every round of dates without getting anyone to like you... we'll give you", "But if you can get through every round of dates without getting anyone to like you... we'll give you one", "But if you can get through every round of dates without getting anyone to like you... we'll give you one MI", "But if you can get through every round of dates without getting anyone to like you... we'll give you one MIL", "But if you can get through every round of dates without getting anyone to like you... we'll give you one MILL", "But if you can get through every round of dates without getting anyone to like you... we'll give you one MILLI", "But if you can get through every round of dates without getting anyone to like you... we'll give you one MILLION", "But if you can get through every round of dates without getting anyone to like you... we'll give you one MILLION doll", "But if you can get through every round of dates without getting anyone to like you... we'll give you one MILLION dollars!" ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "intro6"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("IntroDialoguePanel/DialogueBox/DialogueText:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 0.8, 0.9, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.9, 2, 2.1, 2.3, 2.5, 2.6, 2.7, 2.8, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "Un", "Under", "Understand?", "Understand? If", "Understand? If you", "Understand? If you want", "Understand? If you want to ", "Understand? If you want to win,", "Understand? If you want to win, you", "Understand? If you want to win, you have", "Understand? If you want to win, you have to", "Understand? If you want to win, you have to dis", "Understand? If you want to win, you have to disgust", "Understand? If you want to win, you have to disgust e", "Understand? If you want to win, you have to disgust ev", "Understand? If you want to win, you have to disgust eve", "Understand? If you want to win, you have to disgust ever", "Understand? If you want to win, you have to disgust every", "Understand? If you want to win, you have to disgust every sing", "Understand? If you want to win, you have to disgust every single", "Understand? If you want to win, you have to disgust every single cand", "Understand? If you want to win, you have to disgust every single candid", "Understand? If you want to win, you have to disgust every single candidate." ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "introfinal"
+tracks/0/type = "value"
+tracks/0/path = NodePath("IntroDialoguePanel/DialogueBox/DialogueText:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "", "Think", "Think you", "Think you can", "Think you can win?", "Think you can win? Let's", "Think you can win? Let's find", "Think you can win? Let's find out!" ]
 }
 
 [node name="IntroScene" type="Node2D"]
@@ -119,6 +202,7 @@ margin_bottom = 332.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 6 )
+texture_disabled = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -136,7 +220,40 @@ texture_hover = ExtResource( 12 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/intro1 = SubResource( 1 )
 anims/intro2 = SubResource( 2 )
+anims/intro3 = SubResource( 3 )
+anims/intro4 = SubResource( 4 )
+anims/intro5 = SubResource( 5 )
+anims/intro6 = SubResource( 6 )
+anims/introfinal = SubResource( 7 )
+
+[node name="SkipIntroButton" type="TextureButton" parent="."]
+margin_left = 72.0
+margin_top = 24.0
+margin_right = 308.0
+margin_bottom = 142.0
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SkipIntroLabel" type="RichTextLabel" parent="SkipIntroButton"]
+margin_left = 80.0
+margin_top = 48.0
+margin_right = 168.0
+margin_bottom = 80.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "Skip Intro"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="SettingsMenu" parent="." instance=ExtResource( 17 )]
+position = Vector2( 72, 24 )
 [connection signal="pressed" from="IntroDialoguePanel/YesButton" to="." method="_on_YesButton_pressed"]
 [connection signal="pressed" from="IntroDialoguePanel/ProceedTextButton" to="." method="_on_ProceedTextButton_pressed"]
 [connection signal="pressed" from="IntroDialoguePanel/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="pressed" from="SkipIntroButton" to="." method="_on_SkipIntroButton_pressed"]
