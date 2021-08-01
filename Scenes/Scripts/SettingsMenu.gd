@@ -17,11 +17,13 @@ func _on_QuitButton_pressed():
 
 
 func _on_ConfirmQuit_pressed():
+	$ConfirmPlayer.play()
 	get_tree().quit()
 	pass # Replace with function body.
 
 
 func _on_CancelQuit_pressed():
+	$SelectPlayer.play()
 	quit_handler()
 	pass # Replace with function body.
 
@@ -40,3 +42,11 @@ func settings_handler():
 	else:
 		animator.play("settingspanelshow")
 		settingsopen = true
+
+
+func _on_ConfirmQuit_mouse_entered():
+	$HoverPlayer.play()
+
+
+func _on_CancelQuit_mouse_entered():
+	$HoverPlayer.play()

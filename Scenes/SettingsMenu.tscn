@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://textures/graphics/content sign.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Scripts/SettingsMenu.gd" type="Script" id=2]
@@ -15,8 +15,11 @@
 [ext_resource path="res://textures/graphics/quit sign.png" type="Texture" id=13]
 [ext_resource path="res://textures/buttons/little confirm button press.png" type="Texture" id=14]
 [ext_resource path="res://textures/buttons/little confirm button hover.png" type="Texture" id=15]
+[ext_resource path="res://Sound/confirm_button_sound.mp3" type="AudioStream" id=16]
+[ext_resource path="res://Sound/scroll_button_sound.mp3" type="AudioStream" id=17]
+[ext_resource path="res://Sound/select_button_sound.mp3" type="AudioStream" id=18]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=6]
 resource_name = "default"
 tracks/0/type = "value"
 tracks/0/path = NodePath("SettingsPanel:rect_position")
@@ -43,8 +46,7 @@ tracks/1/keys = {
 "values": [ Vector2( 328, -152 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "quitprompthide"
+[sub_resource type="Animation" id=7]
 tracks/0/type = "value"
 tracks/0/path = NodePath("QuitSign:rect_position")
 tracks/0/interp = 1
@@ -58,8 +60,7 @@ tracks/0/keys = {
 "values": [ Vector2( 328, 184 ), Vector2( 328, 192 ), Vector2( 328, -152 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "quitpromptshow"
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("QuitSign:rect_position")
 tracks/0/interp = 1
@@ -173,6 +174,9 @@ margin_bottom = 84.0
 texture_normal = ExtResource( 12 )
 texture_pressed = ExtResource( 14 )
 texture_hover = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CancelQuit" type="TextureButton" parent="QuitSign"]
 margin_left = 52.0
@@ -182,13 +186,28 @@ margin_bottom = 84.0
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/default = SubResource( 3 )
-anims/quitprompthide = SubResource( 1 )
-anims/quitpromptshow = SubResource( 2 )
+anims/default = SubResource( 6 )
+anims/quitprompthide = SubResource( 7 )
+anims/quitpromptshow = SubResource( 3 )
 anims/settingspanelhide = SubResource( 4 )
 anims/settingspanelshow = SubResource( 5 )
+
+[node name="HoverPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+
+[node name="SelectPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+
+[node name="ConfirmPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+
 [connection signal="pressed" from="SettingsPanel/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="mouse_entered" from="QuitSign/ConfirmQuit" to="." method="_on_ConfirmQuit_mouse_entered"]
 [connection signal="pressed" from="QuitSign/ConfirmQuit" to="." method="_on_ConfirmQuit_pressed"]
+[connection signal="mouse_entered" from="QuitSign/CancelQuit" to="." method="_on_CancelQuit_mouse_entered"]
 [connection signal="pressed" from="QuitSign/CancelQuit" to="." method="_on_CancelQuit_pressed"]
