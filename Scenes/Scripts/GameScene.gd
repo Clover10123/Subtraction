@@ -222,7 +222,7 @@ func endSpeedDate():
 	$PlayerSprite.visible = true
 	$youlabel.visible = true
 	$AnswerPanel.visible = true
-	$GameShowMusic.start()
+	$GameShowMusic.play()
 
 	updateDates()
 	if(dates.size() == 0 and dates.contestantsInQueue() == 0):

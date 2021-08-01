@@ -7,4 +7,4 @@
 var attractiveness : int# Default level of attraction
 
 func _init():
-	attractiveness = 20
+	attractiveness = 80

@@ -78,19 +78,21 @@ func ready(chara, dat, qOne, qTwo, rand):
 	$Date.set_texture(date.texture)
 
 	state = SpeedState.INTRO
+	secondRound = false
 
 
 func start():
 	updateIntroDialogue()
 
 func time():
-	var timer = Timer.new()
-	timer.connect("timeout",self,"randomAnswer") 
-	#timeout is what says in docs, in signals
-	#self is who respond to the callback
-	#_on_timer_timeout is the callback, can have any name
-	add_child(timer) #to process
-	timer.start(Q_TIMEOUT) #to start
+	pass
+	# var timer = Timer.new()
+	# timer.connect("timeout",self,"randomAnswer") 
+	# #timeout is what says in docs, in signals
+	# #self is who respond to the callback
+	# #_on_timer_timeout is the callback, can have any name
+	# add_child(timer) #to process
+	# timer.start(Q_TIMEOUT) #to start
 
 func randomAnswer():
 	print("Timer ran out!")
@@ -115,6 +117,7 @@ func answer(e):
 	if(secondRound == false):
 		secondRound = true
 		question = q2
+		updateQuestion()
 	else:
 		get_parent().endSpeedDate()
 
