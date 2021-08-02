@@ -177,6 +177,8 @@ margin_bottom = 88.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Womp womp."
 
+[connection signal="mouse_entered" from="DatePanel/Option1Button" to="." method="_on_Option1Button_mouse_entered"]
 [connection signal="pressed" from="DatePanel/Option1Button" to="." method="_on_Option1Button_pressed"]
+[connection signal="mouse_entered" from="DatePanel/Option2Button" to="." method="_on_Option2Button_mouse_entered"]
 [connection signal="pressed" from="DatePanel/Option2Button" to="." method="_on_Option2Button_pressed"]
 [connection signal="pressed" from="LossScreen/EndGameButton" to="." method="_on_EndGameButton_pressed"]

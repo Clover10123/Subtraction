@@ -140,3 +140,13 @@ func _on_EndGameButton_pressed():
 		return
 	else:
 		print("Error grabbing game scene")
+
+
+func _on_Option1Button_mouse_entered():
+	if(state == SpeedState.SPEED):
+		$HoverPlayer.play()
+
+
+func _on_Option2Button_mouse_entered():
+	if(state == SpeedState.SPEED):
+		$HoverPlayer.play()

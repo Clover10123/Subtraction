@@ -1,12 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/SettingsMenu.tscn" type="PackedScene" id=1]
-[ext_resource path="res://textures/graphics/phone large content window.png" type="Texture" id=2]
+[ext_resource path="res://textures/graphics/name_card.png" type="Texture" id=2]
 [ext_resource path="res://textures/buttons/play button.png" type="Texture" id=3]
 [ext_resource path="res://textures/buttons/play button hover.png" type="Texture" id=4]
 [ext_resource path="res://textures/buttons/play button press.png" type="Texture" id=5]
 [ext_resource path="res://textures/icons/pixel city.JPG" type="Texture" id=6]
-[ext_resource path="res://textures/graphics/name card.png" type="Texture" id=7]
 [ext_resource path="res://Scenes/Scripts/MainScene.gd" type="Script" id=8]
 [ext_resource path="res://textures/graphics/phone small content sign.png" type="Texture" id=9]
 [ext_resource path="res://Sound/menu_track.mp3" type="AudioStream" id=10]
@@ -24,7 +23,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.3, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 336, 672 ), Vector2( 336, 192 ), Vector2( 336, 232 ), Vector2( 336, 224 ) ]
+"values": [ Vector2( 208, 672 ), Vector2( 208, 160 ), Vector2( 208, 192 ), Vector2( 208, 232 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("ButtonPanel:rect_position")
@@ -33,10 +32,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.4, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 256, 632 ), Vector2( 256, 632 ), Vector2( 256, 272 ) ]
+"values": [ Vector2( 256, 632 ), Vector2( 256, 632 ), Vector2( 256, 296 ), Vector2( 256, 304 ) ]
 }
 
 [node name="MainScene" type="Node2D"]
@@ -57,10 +56,9 @@ __meta__ = {
 
 [node name="ButtonPanel" type="TextureRect" parent="."]
 margin_left = 256.0
-margin_top = 632.0
+margin_top = 304.0
 margin_right = 776.0
-margin_bottom = 936.0
-texture = ExtResource( 2 )
+margin_bottom = 608.0
 stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
@@ -68,9 +66,9 @@ __meta__ = {
 
 [node name="SettingsText" type="RichTextLabel" parent="ButtonPanel"]
 margin_left = 192.0
-margin_top = 208.0
+margin_top = 272.0
 margin_right = 336.0
-margin_bottom = 224.0
+margin_bottom = 288.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Press tab for settings."
 __meta__ = {
@@ -79,9 +77,9 @@ __meta__ = {
 
 [node name="PlayButton" type="TextureButton" parent="ButtonPanel"]
 margin_left = 144.0
-margin_top = 88.0
+margin_top = 152.0
 margin_right = 380.0
-margin_bottom = 206.0
+margin_bottom = 270.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 4 )
@@ -94,11 +92,11 @@ autoplay = "intro"
 anims/intro = SubResource( 1 )
 
 [node name="GameLogoPlaceholder" type="TextureRect" parent="."]
-margin_left = 336.0
-margin_top = 672.0
-margin_right = 704.0
-margin_bottom = 792.0
-texture = ExtResource( 7 )
+margin_left = 208.0
+margin_top = 232.0
+margin_right = 816.0
+margin_bottom = 463.0
+texture = ExtResource( 2 )
 expand = true
 stretch_mode = 5
 __meta__ = {
