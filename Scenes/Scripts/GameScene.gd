@@ -27,6 +27,7 @@ var dates
 var introDialogue = []
 var introDialogueIndex = 0
 var speedDates = []
+var firstTime = true ## first time doing a speed date 
 
 func _ready():
 	rng.randomize()
@@ -191,10 +192,11 @@ func answer(e):
 func speedRound(date):
 	var q1 = getQuestion(false)
 	var q2 = getQuestion(false)
-	$SpeedDatingScene.ready(character, date, q1, q2, rng)
+	$SpeedDatingScene.ready(character, date, q1, q2, rng, firstTime)
 	$SpeedDateMusic.play()
 	$SpeedDatingScene.visible = true
 	$SpeedDatingScene.start()
+	firstTime = false
 
 func speedDate():
 	if(speedDates.size() != 0):

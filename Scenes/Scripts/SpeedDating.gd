@@ -12,7 +12,6 @@ var rng
 var question
 var answers = ["", ""]
 var secondRound
-
 var firstTimer = true
 
 var introDialogue = []
@@ -66,7 +65,15 @@ func updateQuestion():
 	$DatePanel/Option1Button/Option1Text.text = question.ans[answers[0]]
 	$DatePanel/Option2Button/Option2Text.text = question.ans[answers[1]]
 	
-func ready(chara, dat, qOne, qTwo, rand):
+func ready(chara, dat, qOne, qTwo, rand, firstTime):
+	$DatePanel/DateQuestionText.text = ""
+	$DatePanel/Option1Button/Option1Text.text = ""
+	$DatePanel/Option2Button/Option2Text.text = ""
+	if(not firstTime and introDialogue.size() > 1):
+		introDialogue[0] = introDialogue[0] + " " + introDialogue[introDialogue.size()-1]
+		while(introDialogue.size() > 1):
+			introDialogue.pop_back()
+	
 	character = chara
 	date = dat
 	q1 = qOne
