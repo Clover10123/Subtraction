@@ -240,24 +240,30 @@ texture = ExtResource( 10 )
 [node name="GameShowMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
 autoplay = true
+bus = "Music"
 
 [node name="SelectPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
+bus = "SFX"
 
 [node name="HoverPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
+bus = "SFX"
 
 [node name="HostAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
+bus = "SFX"
 
 [node name="SpeedDatingScene" parent="." instance=ExtResource( 16 )]
 visible = false
 
 [node name="SpeedDateMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 17 )
+bus = "Music"
 
 [node name="ElimSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
+bus = "SFX"
 
 [node name="WinScreen" type="TextureRect" parent="."]
 visible = false

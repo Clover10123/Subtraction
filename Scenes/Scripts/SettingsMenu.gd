@@ -2,7 +2,8 @@ extends Node2D
 onready var animator = $AnimationPlayer
 var quitprompt = false
 var settingsopen = false
-
+var music = true
+var sound = true
 
 func _ready():
 	animator.play("default")
@@ -50,3 +51,12 @@ func _on_ConfirmQuit_mouse_entered():
 
 func _on_CancelQuit_mouse_entered():
 	$HoverPlayer.play()
+
+func _on_MusicButton_toggled(button_pressed):
+	$SelectPlayer.play()
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), button_pressed)
+
+
+func _on_SoundButton_toggled(button_pressed):
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"), button_pressed)
+	$SelectPlayer.play()

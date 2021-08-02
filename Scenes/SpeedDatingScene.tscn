@@ -140,9 +140,11 @@ texture = ExtResource( 5 )
 
 [node name="SelectPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 8 )
+bus = "SFX"
 
 [node name="HoverPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 9 )
+bus = "SFX"
 
 [node name="LossScreen" type="TextureRect" parent="."]
 visible = false

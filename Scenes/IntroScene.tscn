@@ -266,12 +266,15 @@ position = Vector2( 72, 24 )
 
 [node name="HostVoicePlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
+bus = "SFX"
 
 [node name="SelectPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 21 )
+bus = "SFX"
 
 [node name="ConfirmPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 20 )
+bus = "SFX"
 
 [connection signal="pressed" from="IntroDialoguePanel/YesButton" to="." method="_on_YesButton_pressed"]
 [connection signal="pressed" from="IntroDialoguePanel/ProceedTextButton" to="." method="_on_ProceedTextButton_pressed"]
